@@ -88,6 +88,7 @@ class Login extends CI_Controller
 	public function logout()
 	{
 		$this->session->unset_userdata('email');
+		$this->session->sess_destroy();
 		$this->session->set_flashdata('message', '<small><div class="alert 
 		alert-success" role="alert">You have been Logged out!</div></small>');
 		redirect('login', 'refresh');
