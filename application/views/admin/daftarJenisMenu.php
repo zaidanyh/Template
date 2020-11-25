@@ -30,10 +30,7 @@
 								<td><?= $i; ?></td>
 								<td><?= $key['name']; ?></td>
 								<td>
-									<a class="badge badge-warning p-1" href="<?= base_url('admin/'); ?>edit/<?= $key['type_id'] ?>"><i class="fa fa-eye p-1"></i> Edit</a>
-									<a class="badge badge-danger p-1" href="<?= base_url('admin/'); ?>delete/<?= $key['type_id'] ?>" onclick="return confirm('Apakah anda yakin menghapus data ini?')">
-										<i class="fa fa-trash-alt p-1"></i> Delete
-									</a>
+									<a type="button" class="badge badge-warning m-1" data-toggle="modal" data-target="#category<?= $key['type_id']; ?>"><i class="fa fa-eye p-1"></i> Edit</a>
 								</td>
 							</tr>
 					<?php $i++;
@@ -65,7 +62,7 @@
 </div>
 <!-- End of Page Wrapper -->
 
-<!-- Modal -->
+<!-- Modal tambah menu -->
 <div class="modal fade" id="modalAddType" tabindex="-1" role="dialog" aria-labelledby="Title" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
@@ -79,7 +76,7 @@
 				<?= form_open('admin/category'); ?>
 				<div class="form-group">
 					<label>Kategori Menu</label>
-					<input type="text" class="form-control form-control-user" name="name" placeholder="Nama">
+					<input type="text" class="form-control form-control-user" name="name" placeholder="Nama Kategori">
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -90,3 +87,33 @@
 		</div>
 	</div>
 </div>
+
+
+<!-- Modal Edit Menu -->
+<?php foreach ($result as $key) { ?>
+	<div class="modal fade" id="category<?= $key['type_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="editCategory" aria-hidden="false">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="editMenu">Edit Menu</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<?= form_open('admin/editcategory'); ?>
+				<div class="modal-body">
+					<input type="hidden" name="idCategory" value="<?= $key['type_id']; ?>">
+					<div class="form-group">
+						<label>Kategori Menu</label>
+						<input type="text" class="form-control form-control-user" name="nameCategory" placeholder="Nama Kategori" value="<?= $key['name']; ?>">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+					<button type="submit" class="btn btn-success">Simpan</button>
+				</div>
+				<?= form_close(); ?>
+			</div>
+		</div>
+	</div>
+<?php } ?>

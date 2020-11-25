@@ -73,6 +73,13 @@
 				</a>
 			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url('admin/settings'); ?>">
+					<i class="fa fa-fw fa-calendar"></i>
+					<span>Atur Jadwal</span>
+				</a>
+			</li>
+
 			<hr class="sidebar-divider">
 			<div class="sidebar-heading">
 				Riwayat
@@ -125,10 +132,6 @@
 								<a class="dropdown-item" href="#">
 									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 									Profile
-								</a>
-								<a class="dropdown-item" href="#">
-									<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-									Settings
 								</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
