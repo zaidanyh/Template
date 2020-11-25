@@ -15,11 +15,9 @@ class Login extends CI_Controller
 		$this->form_validation->set_rules('password', 'Password', 'required|trim');
 
 		if ($this->form_validation->run() == false) {
-			$title['title'] = "Login | Saerah Kopi";
+			$title['title'] = "Login Admin | Saerah Kopi";
 
-			$this->load->view('templates/header', $title);
-			$this->load->view('login/login');
-			$this->load->view('templates/footer');
+			$this->load->view('login/login', $title);
 		} else {
 			$this->_login();
 		}
