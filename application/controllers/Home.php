@@ -22,6 +22,8 @@ class Home extends CI_Controller {
 		$data['title'] = "Jadwal kerja Kami | Kopi Saerah";
 
 		$data['schedule'] = $this->db->get('schedules')->result_array();
+		$data['whatsapp'] = $this->db->get_where('contacts', ['id_contact' => "1"])->row_array();
+		$data['address'] = $this->db->get_where('contacts', ['id_contact' => "4"])->row_array();
 
 		$this->load->view('homepage/jadwal', $data);
 	}

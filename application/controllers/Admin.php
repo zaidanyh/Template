@@ -144,14 +144,22 @@ class Admin extends CI_Controller
 
 	public function orders()
 	{
-		$data['title'] = "Pesanan | Saerah Kopi";
+		$this->form_validation->set_rules('category', 'Category', 'required|numeric');
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		
+		if ($this->form_validation->run() == false) {
+			$data['title'] = "Pesanan | Saerah Kopi";
 
-		$data['user'] = $this->db->get_where('users', ['email' =>
-		$this->session->userdata('email')])->row_array();
+			$data['user'] = $this->db->get_where('users', ['email' =>
+			$this->session->userdata('email')])->row_array();
 
-		$this->load->view('templates/adminHeader', $data);
-		$this->load->view('admin/order', $data);
-		$this->load->view('templates/adminFooter');
+			$data['type'] = $this->db->get('menu_types')->result_array();
+			$data['menu'] = $this->db->get('menus')->result_array();
+
+			$this->load->view('templates/adminHeader', $data);
+			$this->load->view('admin/order', $data);
+			$this->load->view('templates/adminFooter');
+		}
 	}
 
 	public function schedule()
@@ -239,7 +247,7 @@ class Admin extends CI_Controller
 		}
 	}
 
-	public function contact()
+	public function contact($id = null)
 	{
 
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
@@ -261,9 +269,9 @@ class Admin extends CI_Controller
 				'name' => htmlspecialchars($this->input->post('name', true)),
 				'description' => htmlspecialchars($this->input->post('description', true))
 			];
-			$this->db->insert('contacts', $data);
+			$this->db->where('id_contact', $id)->update('contacts', $data);
 			$this->session->set_flashdata('message', '<div class="alert 
-				alert-info" role="alert">Informasi baru berhasil ditambahkan</div>');
+				alert-info" role="alert">Informasi berhasil diubah</div>');
 			redirect('admin/contact', 'refresh');
 		}
 	}
@@ -274,6 +282,8 @@ class Admin extends CI_Controller
 
 		$data['user'] = $this->db->get_where('users', ['email' =>
 		$this->session->userdata('email')])->row_array();
+
+		$data['history'] = $this->Admin_Model->history();
 
 		$this->load->view('templates/adminHeader', $data);
 		$this->load->view('admin/history', $data);
@@ -354,43 +364,6 @@ class Admin extends CI_Controller
 			}
 		}
 	}
-
-	public function editcontact($id)
-	{
-		$this->form_validation->set_rules('name', 'Name', 'required|trim');
-		$this->form_validation->set_rules('description', 'Description', 'required|trim');
-
-		if ($this->form_validation->run() == false) {
-			$this->session->set_flashdata('message', '<div class="alert 
-					alert-danger" role="alert">Terdapat Kesalahan saat memperbarui informasi!</div>');
-			redirect('admin/contact', 'refresh');
-		} else {
-			$data = [
-				'name' => htmlspecialchars($this->input->post('name', TRUE)),
-				'description' => htmlspecialchars($this->input->post('description', TRUE))
-			];
-
-			$this->db->where('id_contact', $id)->update('contacts', $data);
-			if ($this->db->affected_rows() > 0) {
-				$this->session->set_flashdata('message', '<div class="alert 
-					alert-success" role="alert">Informasi Kontak berhasil diedit</div>');
-				redirect('admin/contact', 'refresh');
-			} else {
-				$this->session->set_flashdata('message', '<div class="alert 
-					alert-danger" role="alert">Informasi Kontak gagal diedit</div>');
-				redirect('admin/contact', 'refresh');
-			}
-		}
-	}
-
-	public function deletecontact($id)
-	{
-		$this->db->where('id_contact', $id)->delete('contacts');
-		$this->session->set_flashdata('message', '<div class="alert 
-				alert-info" role="alert">Informasi Kontak berhasil dihapus</div>');
-		redirect('admin/contact', 'refresh');
-	}
-
 
 	// Fungsi Upload Gambar
 	private function _uploadImage()

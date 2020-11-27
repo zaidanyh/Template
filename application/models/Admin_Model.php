@@ -21,4 +21,12 @@
 				return $this->db->get_where('menus', ['menu_id' => $id])->row();
 			}
 		}
+
+		public function history() {
+			$this->db->select('o.amount as amount, o.total_payment as total, m.name as name, m.price as price, t.name as category');
+			$this->db->from('orders as o');
+			$this->db->join('menus as m', 'o.menu_id = m.menu_id', 'LEFT');
+			$this->db->join('menu_types as t', 'm.type_id = t.type_id', 'LEFT');
+			return $this->db->get()->result_array();
+		}
 	}

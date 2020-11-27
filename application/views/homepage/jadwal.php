@@ -17,7 +17,7 @@
 <body style="background:linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('<?= base_url('assets') ?>/img/bg.jpg');">
 	<h1 class="text-center text-white d-none d-lg-block site-heading"><span class="site-heading-lower">Saerah kopi</span></h1>
 	<nav class="navbar navbar-light navbar-expand-lg sticky-top bg-dark py-lg-4" id="mainNav">
-		<div class="container-fluid"><a class="navbar-brand text-uppercase d-lg-none text-expanded" href="#">Saerah Kopi</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+		<div class="container-fluid"><a class="navbar-brand text-uppercase d-lg-none text-expanded" href="<?= base_url(); ?>">Saerah Kopi</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="nav navbar-nav mx-auto">
 					<li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>">Home</a></li>
@@ -42,8 +42,8 @@
 							<?php	}
 							} ?>
 						</ul>
-						<p class="address mb-5"><em><strong>No. jl. alamat</strong><span><br>Kecamatan, Kabupaten</span></em></p>
-						<p class="address mb-0"><small><em>Call Anytime</em></small><span><br>(317) 585-8468 Nomer Telp</span></p>
+						<p class="address mb-5"><em><strong><?= $address['name']; ?></strong><span><br><?= $address['description']; ?></span></em></p>
+						<p class="address mb-0"><small><em>Call Anytime</em></small><span><br><i class="fa fa-fw fa-whatsapp"></i> <?= $whatsapp['description']; ?></span></p>
 					</div>
 				</div>
 			</div>
@@ -53,7 +53,7 @@
 		<div class="container">
 			<p class="m-0 small">Copyright&nbsp;©&nbsp;Saerah Kopi 2020</p>
 		</div>
-	</footer><a class="btn btn-light btn-lg border rounded-circle d-block float-right order-12 d-flex justify-content-center align-items-center" role="button" data-bs-hover-animate="pulse" target="_blank" style="width: 70px;height: 70px;" href="#"><i class="fa fa-phone" data-bs-hover-animate="flash" style="width: 30px;height: 30px;margin-top: 10px;"></i></a>
+	</footer><a class="btn btn-light btn-lg border rounded-circle d-block float-right order-12 d-flex justify-content-center align-items-center" role="button" data-bs-hover-animate="pulse" target="_blank" style="width: 70px;height: 70px;" href="https://api.whatsapp.com/send?phone=<?= $whatsapp['description']; ?>"><i class="fa fa-phone" data-bs-hover-animate="flash" style="width: 30px;height: 30px;margin-top: 10px;"></i></a>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 	<script src="<?= base_url('assets') ?>/js/bs-init.js"></script>

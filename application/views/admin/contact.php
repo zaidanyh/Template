@@ -3,7 +3,6 @@
 	<!-- Page Heading -->
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
 		<h1 class="h4 mb-0 text-gray-800">Informasi Kontak</h1>
-		<button type="button" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#modalKontak"><i class="fa fa-plus-circle text-white-50"></i> Tambah Kontak</button>
 	</div>
 
 	<div class="row">
@@ -13,8 +12,8 @@
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Nama</th>
-						<th>Deskripsi</th>
+						<th>Informasi 1</th>
+						<th>Informasi 2</th>
 						<th>Aksi</th>
 					</tr>
 				</thead>
@@ -28,9 +27,6 @@
 							<td><?= $key['description']; ?></td>
 							<td>
 								<a type="button" class="badge badge-warning m-1" data-toggle="modal" data-target="#contact<?= $key['id_contact']; ?>"><i class="fa fa-eye p-1"></i> Edit</a>
-								<a class="badge badge-danger m-1" href="<?= base_url('admin/'); ?>deletecontact/<?= $key['id_contact'] ?>" onclick="return confirm('Apakah anda yakin menghapus data ini?')">
-									<i class="fa fa-trash-alt p-1"></i> Delete
-								</a>
 							</td>
 						</tr>
 					<?php $i++;
@@ -61,36 +57,6 @@
 </div>
 <!-- End of Page Wrapper -->
 
-<!-- Modal Add Kontak -->
-<div class="modal fade" id="modalKontak" tabindex="-1" role="dialog" aria-labelledby="titleAddMenu" aria-hidden="false">
-	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="titleAddMenu">Tambah Informasi Kontak</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<?= form_open('admin/contact'); ?>
-			<div class="modal-body">
-				<div class="form-group">
-					<label>Nama Informasi Kontak</label>
-					<input type="text" class="form-control form-control-user" name="name">
-				</div>
-				<div class="form-group">
-					<label>Deskripsi</label>
-					<input type="text" class="form-control form-control-user" name="description">
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-				<button type="submit" class="btn btn-success">Tambah</button>
-			</div>
-			<?= form_close(); ?>
-		</div>
-	</div>
-</div>
-
 <!-- Modal Edit Kontak -->
 <?php foreach ($contact as $key) { ?>
 	<div class="modal fade" id="contact<?= $key['id_contact']; ?>" tabindex="-1" role="dialog" aria-labelledby="editcontact" aria-hidden="false">
@@ -102,7 +68,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<?= form_open('admin/editcontact/' . $key['id_contact']); ?>
+				<?= form_open('admin/contact/' . $key['id_contact']); ?>
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Nama Informasi Kontak</label>
