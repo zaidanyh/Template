@@ -34,13 +34,13 @@
 					<div class="cta-inner text-center rounded">
 						<h2 class="section-heading mb-5"><span class="section-heading-upper">silahkan datang</span><span class="section-heading-lower">BUka setiap :</span></h2>
 						<ul class="list-unstyled mx-auto list-hours mb-5 text-left">
-							<li class="d-flex list-unstyled-item list-hours-item">Minggu<span class="ml-auto">Tutup</span></li>
-							<li class="d-flex list-unstyled-item list-hours-item">Senin<span class="ml-auto">7:00 AM to 8:00 PM</span></li>
-							<li class="d-flex list-unstyled-item list-hours-item">Selasa<span class="ml-auto">7:00 AM to 8:00 PM</span></li>
-							<li class="d-flex list-unstyled-item list-hours-item">Rabu<span class="ml-auto">7:00 AM to 8:00 PM</span></li>
-							<li class="d-flex list-unstyled-item list-hours-item">Kamis<span class="ml-auto">7:00 AM to 8:00 PM</span></li>
-							<li class="d-flex list-unstyled-item list-hours-item">Jum'at<span class="ml-auto">7:00 AM to 8:00 PM</span></li>
-							<li class="d-flex list-unstyled-item list-hours-item">Sabtu<span class="ml-auto">9:00 AM to 5:00 PM</span></li>
+							<?php foreach ($schedule as $key) {
+								if ($key['is_close'] == 1) { ?>
+									<li class="d-flex list-unstyled-item list-hours-item"><?= $key['name_day']; ?><span class="ml-auto">Tutup</span></li>
+								<?php } else { ?>
+									<li class="d-flex list-unstyled-item list-hours-item"><?= $key['name_day']; ?><span class="ml-auto"><?= $key['open']; ?>&nbsp; sampai &nbsp;<?= $key['close']; ?></span></li>
+							<?php	}
+							} ?>
 						</ul>
 						<p class="address mb-5"><em><strong>No. jl. alamat</strong><span><br>Kecamatan, Kabupaten</span></em></p>
 						<p class="address mb-0"><small><em>Call Anytime</em></small><span><br>(317) 585-8468 Nomer Telp</span></p>

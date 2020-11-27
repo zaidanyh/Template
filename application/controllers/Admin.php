@@ -7,7 +7,6 @@ class Admin extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Admin_Model');
-		$this->load->library('form_validation');
 
 		if ($this->session->userdata('email') == null) {
 			redirect('login', 'refresh');
@@ -15,7 +14,7 @@ class Admin extends CI_Controller
 	}
 	public function index()
 	{
-		$data['title'] = "Dashboard | Saerah Kopi";
+		$data['title'] = "Dashboard Admin Saerah Kopi";
 
 		$data['user'] = $this->db->get_where('users', ['email' =>
 		$this->session->userdata('email')])->row_array();
@@ -149,11 +148,136 @@ class Admin extends CI_Controller
 
 		$data['user'] = $this->db->get_where('users', ['email' =>
 		$this->session->userdata('email')])->row_array();
+
+		$this->load->view('templates/adminHeader', $data);
+		$this->load->view('admin/order', $data);
+		$this->load->view('templates/adminFooter');
+	}
+
+	public function schedule()
+	{
+		$this->form_validation->set_rules('open_work', 'Open', 'required|trim');
+		$this->form_validation->set_rules('close_work', 'Close', 'required|trim');
+		$this->form_validation->set_rules('closing', 'Close');
+
+		if ($this->form_validation->run() == false) {
+			$data['title'] = "Pengaturan Jadwal | Saerah Kopi";
+
+			$data['user'] = $this->db->get_where('users', ['email' =>
+			$this->session->userdata('email')])->row_array();
+
+			$data['schedule'] = $this->db->get('schedules')->result_array();
+
+			$this->load->view('templates/adminHeader', $data);
+			$this->load->view('admin/jadwal', $data);
+			$this->load->view('templates/adminFooter');
+		} else {
+			$id = $this->input->post('idSchedule');
+			$closing = $this->input->post('closing');
+
+			if ($closing == "on") {
+				$this->db->set('open', NULL);
+				$this->db->set('close', NULL);
+				$this->db->set('is_close', 1);
+			} else {
+				$this->db->set('open', $this->input->post('open_work', true));
+				$this->db->set('close', $this->input->post('close_work', true));
+				$this->db->set('is_close', 0);
+			}
+
+			$this->db->where('id_schedule', $id)->update('schedules');
+			if ($this->db->affected_rows() > 0) {
+				$this->session->set_flashdata('message', '<div class="alert 
+				alert-success" role="alert">Menu berhasil diedit</div>');
+				redirect('admin/schedule', 'refresh');
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert 
+				alert-danger" role="alert">Jangan Lupa Cek Status Libur</div>');
+				redirect('admin/schedule', 'refresh');
+			}
+		}
+	}
+
+	public function blog($id = null)
+	{
+		$this->form_validation->set_rules('nameBlog', 'Name', 'required|trim');
+		$this->form_validation->set_rules('content_field', 'Content', 'required|trim');
+
+		if ($this->form_validation->run() == false) {
+			$data['title'] = "Tentang Saerah Kopi";
+
+			$data['user'] = $this->db->get_where('users', ['email' =>
+			$this->session->userdata('email')])->row_array();
+
+			$data['blog'] = $this->db->get('blogs')->result_array();
+
+			$this->load->view('templates/adminHeader', $data);
+			$this->load->view('admin/blog', $data);
+			$this->load->view('templates/adminFooter');
+		} else {
+			$name = htmlspecialchars($this->input->post('nameBlog', true));
+			$content = htmlspecialchars($this->input->post('content_field'));
+			$this->db->set('name_blog', $name);
+			$this->db->set('blog_content', $content);
+
+			if (!empty($_FILES['photo']['name'])) {
+				$this->db->set('photo', $this->_uploadImage());
+			} else {
+				$this->db->set('photo', $this->input->post('current_photo'));
+			}
+
+			$this->db->where('id', $id)->update('blogs');
+			if ($this->db->affected_rows() > 0) {
+				$this->session->set_flashdata('message', '<div class="alert 
+				alert-info" role="alert">Blog berhasil diperbarui</div>');
+				redirect('admin/blog', 'refresh');
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert 
+				alert-danger" role="alert">Blog gagal diperbarui</div>');
+				redirect('admin/blog', 'refresh');
+			}
+		}
+	}
+
+	public function contact()
+	{
+
+		$this->form_validation->set_rules('name', 'Name', 'required|trim');
+		$this->form_validation->set_rules('description', 'Description', 'required|trim');
+
+		if ($this->form_validation->run() == false) {
+			$data['title'] = "Informasi Kontak | Saerah Kopi";
+
+			$data['user'] = $this->db->get_where('users', ['email' =>
+			$this->session->userdata('email')])->row_array();
+
+			$data['contact'] = $this->db->get('contacts')->result_array();
+
+			$this->load->view('templates/adminHeader', $data);
+			$this->load->view('admin/contact', $data);
+			$this->load->view('templates/adminFooter');
+		} else {
+			$data = [
+				'name' => htmlspecialchars($this->input->post('name', true)),
+				'description' => htmlspecialchars($this->input->post('description', true))
+			];
+			$this->db->insert('contacts', $data);
+			$this->session->set_flashdata('message', '<div class="alert 
+				alert-info" role="alert">Informasi baru berhasil ditambahkan</div>');
+			redirect('admin/contact', 'refresh');
+		}
 	}
 
 	public function history()
 	{
 		$data['title'] = "Riwayat Data Pesanan | Saerah Kopi";
+
+		$data['user'] = $this->db->get_where('users', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$this->load->view('templates/adminHeader', $data);
+		$this->load->view('admin/history', $data);
+		$this->load->view('templates/adminFooter');
 	}
 
 	public function deletemenu($id)
@@ -229,5 +353,58 @@ class Admin extends CI_Controller
 				}
 			}
 		}
+	}
+
+	public function editcontact($id)
+	{
+		$this->form_validation->set_rules('name', 'Name', 'required|trim');
+		$this->form_validation->set_rules('description', 'Description', 'required|trim');
+
+		if ($this->form_validation->run() == false) {
+			$this->session->set_flashdata('message', '<div class="alert 
+					alert-danger" role="alert">Terdapat Kesalahan saat memperbarui informasi!</div>');
+			redirect('admin/contact', 'refresh');
+		} else {
+			$data = [
+				'name' => htmlspecialchars($this->input->post('name', TRUE)),
+				'description' => htmlspecialchars($this->input->post('description', TRUE))
+			];
+
+			$this->db->where('id_contact', $id)->update('contacts', $data);
+			if ($this->db->affected_rows() > 0) {
+				$this->session->set_flashdata('message', '<div class="alert 
+					alert-success" role="alert">Informasi Kontak berhasil diedit</div>');
+				redirect('admin/contact', 'refresh');
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert 
+					alert-danger" role="alert">Informasi Kontak gagal diedit</div>');
+				redirect('admin/contact', 'refresh');
+			}
+		}
+	}
+
+	public function deletecontact($id)
+	{
+		$this->db->where('id_contact', $id)->delete('contacts');
+		$this->session->set_flashdata('message', '<div class="alert 
+				alert-info" role="alert">Informasi Kontak berhasil dihapus</div>');
+		redirect('admin/contact', 'refresh');
+	}
+
+
+	// Fungsi Upload Gambar
+	private function _uploadImage()
+	{
+		$config['upload_path']          = './assets/upload/blog/';
+		$config['allowed_types']        = 'jpg|png|jpeg';
+		$config['max_size']    			= '4096';
+		$config['overwrite'] 			= true;
+
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('photo')) {
+			return $this->upload->data("file_name");
+		}
+		return "about.jpg";
 	}
 }

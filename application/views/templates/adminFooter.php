@@ -22,18 +22,6 @@
 	</div>
 </div>
 
-<script>
-	var myNav = document.getElementById('accordionSidebar');
-	var navs = myNav.getElementsByClassName('nav-item');
-	for (var i = 0; i < navs.length; i++) {
-		navs[i].addEventListener("click", function() {
-			var current = document.getElementsByClassName('active');
-			current[0].className = current[0].className.replace(' active', '');
-			this.className += ' active';
-		});
-	}
-</script>
-
 <!-- Bootstrap core JavaScript-->
 <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
 <script src="<?= base_url('assets/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -43,6 +31,12 @@
 
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/'); ?>js/sb-admin-2.js"></script>
+<script>
+	$('.custom-file-input').on('change', function() {
+		let fileName = $(this).val().split('\\').pop();
+		$(this).next('.custom-file-label').addClass("selected").html(fileName);
+	});
+</script>
 
 <!-- Page level plugins -->
 <script src="<?= base_url('assets/'); ?>vendor/chart.js/Chart.min.js"></script>

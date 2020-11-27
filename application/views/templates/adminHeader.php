@@ -40,7 +40,11 @@
 			<!-- Divider -->
 			<hr class="sidebar-divider my-0">
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item active">
+			<?php if ($title == "Dashboard Admin Saerah Kopi") {?>
+				<li class="nav-item active">
+			<?php } else { ?>
+				<li class="nav-item">
+				<?php }?>
 				<a class="nav-link" href="<?= base_url('admin'); ?>">
 					<i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>Dashboard</span>
@@ -49,34 +53,77 @@
 
 			<hr class="sidebar-divider">
 			<div class="sidebar-heading">
-				Manajemen
+				Pemesanan
 			</div>
 
-			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url('admin/category'); ?>">
+			<?php if ($title == "Daftar Kategori Menu | Saerah Kopi") {?>
+				<li class="nav-item active">
+			<?php } else { ?>
+				<li class="nav-item">
+				<?php }?>
+				<a class="nav-link pb-0" href="<?= base_url('admin/category'); ?>">
 					<i class="fa fa-fw fa-list-ul"></i>
 					<span>Kategori Menu</span>
 				</a>
 			</li>
 
-			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url('admin/allmenu'); ?>">
+			<?php if ($title == "Daftar Menu | Saerah Kopi") {?>
+				<li class="nav-item active">
+			<?php } else { ?>
+				<li class="nav-item">
+				<?php }?>
+				<a class="nav-link pb-0" href="<?= base_url('admin/allmenu'); ?>">
 					<i class="fa fa-fw fa-list-alt"></i>
 					<span>Daftar Menu</span>
 				</a>
 			</li>
 
-			<li class="nav-item">
+			<?php if ($title == "Pesanan | Saerah Kopi") {?>
+				<li class="nav-item active">
+			<?php } else { ?>
+				<li class="nav-item pb-0">
+				<?php }?>
 				<a class="nav-link" href="<?= base_url('admin/orders'); ?>">
 					<i class="fa fa-fw fa-cart-plus"></i>
 					<span>Pesan</span>
 				</a>
 			</li>
 
-			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url('admin/settings'); ?>">
-					<i class="fa fa-fw fa-calendar"></i>
+			<hr class="sidebar-divider">
+			<div class="sidebar-heading">
+				Informasi
+			</div>
+
+			<?php if ($title == "Pengaturan Jadwal | Saerah Kopi") {?>
+				<li class="nav-item active">
+			<?php } else { ?>
+				<li class="nav-item">
+				<?php }?>
+				<a class="nav-link pb-0" href="<?= base_url('admin/schedule'); ?>">
+					<i class="fa fa-fw fa-clock"></i>
 					<span>Atur Jadwal</span>
+				</a>
+			</li>
+
+			<?php if ($title == "Tentang Saerah Kopi") {?>
+				<li class="nav-item active">
+			<?php } else { ?>
+				<li class="nav-item">
+				<?php }?>
+				<a class="nav-link pb-0" href="<?= base_url('admin/blog'); ?>">
+					<i class="fa fa-fw fa-folder-open"></i>
+					<span>Blog</span>
+				</a>
+			</li>
+
+			<?php if ($title == "Informasi Kontak | Saerah Kopi") {?>
+				<li class="nav-item active">
+			<?php } else { ?>
+				<li class="nav-item">
+				<?php }?>
+				<a class="nav-link" href="<?= base_url('admin/contact'); ?>">
+					<i class="fa fa-fw fa-question-circle"></i>
+					<span>Kontak</span>
 				</a>
 			</li>
 
@@ -85,7 +132,11 @@
 				Riwayat
 			</div>
 
-			<li class="nav-item">
+			<?php if ($title == "Riwayat Data Pesanan | Saerah Kopi") {?>
+				<li class="nav-item active">
+			<?php } else { ?>
+				<li class="nav-item">
+				<?php }?>
 				<a class="nav-link" href="<?= base_url('admin/history') ?>">
 					<i class="fa fa-fw fa-history"></i>
 					<span>Pesanan</span>
