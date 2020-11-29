@@ -40,27 +40,14 @@ class Admin_Model extends CI_Model
 		$this->db->from('orders as o');
 		$this->db->join('menus as m', 'o.menu_id = m.menu_id', 'LEFT');
 		$this->db->join('menu_types as t', 'm.type_id = t.type_id', 'LEFT');
+		$this->db->order_by('o.order_id', 'DESC');
 		return $this->db->get()->result_array();
 	}
 
 	public function getStatistics()
 	{
-		$this->db->select('COUNT(order_id) as amount, SUM(total_payment) as total');
+		$this->db->select('SUM(IF(DAY(created_at)=DAY(CURRENT_DATE()), total_payment, 0)) as daily, SUM(IF(MONTH(created_at)=MONTH(CURRENT_DATE()), total_payment, 0)) as monthly, COUNT(order_id) as amount, SUM(total_payment) as total');
 		$this->db->from('orders');
 		return $this->db->get()->row_array();
-	}
-
-	public function getDaily()
-	{
-		$sql = "SELECT SUM(total_payment) as inDaily FROM orders WHERE DAY(created_at) = DAY(CURRENT_DATE())";
-		$result = $this->db->query($sql);
-		return $result->row();
-	}
-
-	public function getMonthly()
-	{
-		$sql = "SELECT SUM(total_payment) as thisMonth FROM orders WHERE MONTH(created_at) = MONTH(CURRENT_DATE())";
-		$result  = $this->db->query($sql);
-		return $result->row();
 	}
 }

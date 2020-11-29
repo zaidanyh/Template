@@ -6,7 +6,7 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$data['title'] = "Selamat Datang Kopi Saerah";
-		
+		$data['whatsapp'] = $this->db->get_where('contacts', ['id_contact' => "1"])->row_array();
 		$this->load->view('homepage/index', $data);
 	}
 
@@ -14,6 +14,7 @@ class Home extends CI_Controller {
 	{
 		$data['title'] = "Tentang Kami | Kopi Saerah";
 		$data['data'] = $this->db->get_where('blogs', ['id' => "6"])->row_array();
+		$data['whatsapp'] = $this->db->get_where('contacts', ['id_contact' => "1"])->row_array();
 		$this->load->view('homepage/about', $data);
 	}
 

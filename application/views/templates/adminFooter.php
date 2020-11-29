@@ -52,7 +52,7 @@
 		}
 	}
 
-	$('#amountOrder').bind("keyup", (e) => {
+	$('#amountOrder').bind("keyup mouseup", (e) => {
 		const harga = $('#priceMenu').val();
 		const total = e.target.value;
 		$('#totalPayment').val(harga * total);

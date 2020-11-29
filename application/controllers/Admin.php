@@ -20,8 +20,6 @@ class Admin extends CI_Controller
 		$this->session->userdata('email')])->row_array();
 
 		$data['statistics'] = $this->Admin_Model->getStatistics();
-		$data['monthly'] = $this->Admin_Model->getMonthly();
-		$data['daily'] = $this->Admin_Model->getDaily();
 
 		$this->load->view('templates/adminHeader', $data);
 		$this->load->view('admin/index', $data);

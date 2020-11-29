@@ -72,7 +72,11 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Nama Informasi Kontak</label>
+<<<<<<< Updated upstream
 						<input type="text" class="form-control form-control-user" name="name" value="<?= $key['name']; ?>" disabled>
+=======
+						<input type="text" class="form-control form-control-user" name="name" value="<?= $key['name']; ?>" readonly>
+>>>>>>> Stashed changes
 					</div>
 					<div class="form-group">
 						<label>Deskripsi</label>

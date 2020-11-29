@@ -43,7 +43,7 @@
 						<div class="col-lg-5">
 							<div class="form-group">
 								<label>Jumlah Pesanan</label>
-								<input type="number" name="amount" id="amountOrder" class="form-control form-control-user" placeholder="Jumlah">
+								<input type="number" name="amount" id="amountOrder" class="form-control form-control-user" placeholder="Jumlah" readonly>
 								<?= form_error('amount', '<small class="text-danger">', '</small>') ?>
 							</div>
 						</div>

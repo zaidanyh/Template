@@ -47,7 +47,7 @@
 			<p class="m-0 small">Copyright&nbsp;©&nbsp;Saerah Kopi 2020</p>
 		</div>
 	</footer>
-	<a class="btn btn-light btn-lg border rounded-circle d-block float-right order-12 d-flex justify-content-center align-items-center" role="button" data-bs-hover-animate="pulse" target="_blank" style="width: 70px;height: 70px;" href="#"><i class="fa fa-phone" data-bs-hover-animate="flash" style="width: 30px;height: 30px;margin-top: 10px;"></i></a>
+	<a class="btn btn-light btn-lg border rounded-circle d-block float-right order-12 d-flex justify-content-center align-items-center" role="button" data-bs-hover-animate="pulse" target="_blank" style="width: 70px;height: 70px;" href="https://api.whatsapp.com/send?phone=<?= $whatsapp['description']; ?>"><i class="fa fa-phone" data-bs-hover-animate="flash" style="width: 30px;height: 30px;margin-top: 10px;"></i></a>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 	<script src="<?= base_url('assets') ?>/js/bs-init.js"></script>
