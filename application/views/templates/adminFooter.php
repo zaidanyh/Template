@@ -34,13 +34,13 @@
 <script src="<?= base_url('assets/'); ?>/js/content-js.js"></script>
 <script>
 	function fetchData(x) {
-		var y = ""
+
 		if (x.length == 0) {
 			document.getElementById("priceMenu").value = "0";
 			return;
 		} else {
 			const xmlHttp = new XMLHttpRequest();
-			xmlHttp.open("GET", "<?= base_url('admin/fetchMenu/') ?>" + x, true);
+			xmlHttp.open("GET", "<?= base_url('admin/fetchMenu/') ?>" + x.trim().replace(" ", "_"), true);
 			xmlHttp.onload = function() {
 				if (this.status == 200) {
 					const result = JSON.parse(xmlHttp.response);
@@ -52,18 +52,11 @@
 		}
 	}
 
-	function calculate() {
-		const price = $('#priceMenu').val();
-		console.log(price);
-		const amount = $('#amountOrder').val();
-		const total = parseInt(price) * parseInt(amount)
-
-		if (!isNaN) {
-			$('#totalPayment').val(total);
-		} else {
-			$('#totalPayment').val($price);
-		}
-	}
+	$('#amountOrder').bind("keyup", (e) => {
+		const harga = $('#priceMenu').val();
+		const total = e.target.value;
+		$('#totalPayment').val(harga * total);
+	});
 </script>
 
 <!-- Page level plugins -->
