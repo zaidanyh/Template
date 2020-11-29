@@ -28,7 +28,8 @@
 		</div>
 	</nav>
 	<section class="page-section about-heading">
-		<div class="container"><img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="<?= base_url('assets/upload/blog/') . $data['photo']; ?>">
+		<div class="container" style="display: grid; place-items: center;">
+			<img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="<?= base_url('assets/upload/blog/') . $data['photo']; ?>">
 			<div class="about-heading-content">
 				<div class="row">
 					<div class="col-lg-10 col-xl-9 mx-auto">
@@ -45,7 +46,8 @@
 		<div class="container">
 			<p class="m-0 small">Copyright&nbsp;©&nbsp;Saerah Kopi 2020</p>
 		</div>
-	</footer><a class="btn btn-light btn-lg border rounded-circle d-block float-right order-12 d-flex justify-content-center align-items-center" role="button" data-bs-hover-animate="pulse" target="_blank" style="width: 70px;height: 70px;" href="#"><i class="fa fa-phone" data-bs-hover-animate="flash" style="width: 30px;height: 30px;margin-top: 10px;"></i></a>
+	</footer>
+	<a class="btn btn-light btn-lg border rounded-circle d-block float-right order-12 d-flex justify-content-center align-items-center" role="button" data-bs-hover-animate="pulse" target="_blank" style="width: 70px;height: 70px;" href="#"><i class="fa fa-phone" data-bs-hover-animate="flash" style="width: 30px;height: 30px;margin-top: 10px;"></i></a>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 	<script src="<?= base_url('assets') ?>/js/bs-init.js"></script>

@@ -43,7 +43,11 @@
 							} ?>
 						</ul>
 						<p class="address mb-5"><em><strong><?= $address['name']; ?></strong><span><br><?= $address['description']; ?></span></em></p>
-						<p class="address mb-0"><small><em>Call Anytime</em></small><span><br><i class="fa fa-fw fa-whatsapp"></i> <?= $whatsapp['description']; ?></span></p>
+						<p class="address mb-0"><small><em>Call Anytime</em></small>
+							<a href="https://api.whatsapp.com/send?phone=<?= $whatsapp['description']; ?>" class="h4 text-dark"><br>
+								<i class="fa fa-fw fa-whatsapp"></i> <?= $whatsapp['description']; ?>
+							</a>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -53,7 +57,11 @@
 		<div class="container">
 			<p class="m-0 small">Copyright&nbsp;©&nbsp;Saerah Kopi 2020</p>
 		</div>
-	</footer><a class="btn btn-light btn-lg border rounded-circle d-block float-right order-12 d-flex justify-content-center align-items-center" role="button" data-bs-hover-animate="pulse" target="_blank" style="width: 70px;height: 70px;" href="https://api.whatsapp.com/send?phone=<?= $whatsapp['description']; ?>"><i class="fa fa-phone" data-bs-hover-animate="flash" style="width: 30px;height: 30px;margin-top: 10px;"></i></a>
+	</footer>
+	<!-- no w.a -->
+	<a class="btn btn-light btn-lg border rounded-circle d-block float-right order-12 d-flex justify-content-center align-items-center" role="button" data-bs-hover-animate="pulse" target="_blank" style="width: 70px;height: 70px;" href="https://api.whatsapp.com/send?phone=<?= $whatsapp['description']; ?>">
+		<i class="fa fa-phone" data-bs-hover-animate="flash" style="width: 30px;height: 30px;margin-top: 10px;"></i></a>
+	<!-- no w.a -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 	<script src="<?= base_url('assets') ?>/js/bs-init.js"></script>

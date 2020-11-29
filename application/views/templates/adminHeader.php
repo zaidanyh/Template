@@ -101,7 +101,7 @@
 				<?php }?>
 				<a class="nav-link pb-0" href="<?= base_url('admin/schedule'); ?>">
 					<i class="fa fa-fw fa-clock"></i>
-					<span>Atur Jadwal</span>
+					<span>Atur Jadwal Toko</span>
 				</a>
 			</li>
 
@@ -112,7 +112,7 @@
 				<?php }?>
 				<a class="nav-link pb-0" href="<?= base_url('admin/blog'); ?>">
 					<i class="fa fa-fw fa-folder-open"></i>
-					<span>Blog</span>
+					<span>Atur Tentang Kami</span>
 				</a>
 			</li>
 
@@ -123,7 +123,7 @@
 				<?php }?>
 				<a class="nav-link" href="<?= base_url('admin/contact'); ?>">
 					<i class="fa fa-fw fa-question-circle"></i>
-					<span>Kontak</span>
+					<span>Atur Informasi Kontak</span>
 				</a>
 			</li>
 
@@ -139,7 +139,7 @@
 				<?php }?>
 				<a class="nav-link" href="<?= base_url('admin/history') ?>">
 					<i class="fa fa-fw fa-history"></i>
-					<span>Pesanan</span>
+					<span>Riwayat Pesanan</span>
 				</a>
 			</li>
 
