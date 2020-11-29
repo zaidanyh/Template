@@ -27,7 +27,8 @@
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<ul class="nav navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+		<ul class="nav navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar"
+		style="background-color:  #77523d;">
 
 			<!-- Sidebar - Brand -->
 			<a class="sidebar-brand d-flex align-items-center justify-content-center m-3" href="<?= base_url('admin'); ?>">
