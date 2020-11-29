@@ -31,21 +31,46 @@
 
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/'); ?>js/sb-admin-2.js"></script>
+<script src="<?= base_url('assets/'); ?>/js/content-js.js"></script>
 <script>
-	$('.custom-file-input').on('change', function() {
-		let fileName = $(this).val().split('\\').pop();
-		$(this).next('.custom-file-label').addClass("selected").html(fileName);
-	});
+	function fetchData(x) {
+		var y = ""
+		if (x.length == 0) {
+			document.getElementById("priceMenu").value = "0";
+			return;
+		} else {
+			const xmlHttp = new XMLHttpRequest();
+			xmlHttp.open("GET", "<?= base_url('admin/fetchMenu/') ?>" + x, true);
+			xmlHttp.onload = function() {
+				if (this.status == 200) {
+					const result = JSON.parse(xmlHttp.response);
+					document.getElementById("idMenu").value = result['menu_id'];
+					document.getElementById("priceMenu").value = result['price'];
+				}
+			}
+			xmlHttp.send();
+		}
+	}
+
+	function calculate() {
+		const price = $('#priceMenu').val();
+		console.log(price);
+		const amount = $('#amountOrder').val();
+		const total = parseInt(price) * parseInt(amount)
+
+		if (!isNaN) {
+			$('#totalPayment').val(total);
+		} else {
+			$('#totalPayment').val($price);
+		}
+	}
 </script>
 
 <!-- Page level plugins -->
-<script src="<?= base_url('assets/'); ?>vendor/chart.js/Chart.min.js"></script>
 <script src="<?= base_url('assets/'); ?>vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url('assets/'); ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="<?= base_url('assets/'); ?>js/demo/chart-area-demo.js"></script>
-<script src="<?= base_url('assets/'); ?>js/demo/chart-pie-demo.js"></script>
 <script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
 
 </body>

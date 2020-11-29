@@ -13,30 +13,29 @@
 				</div>
 				<?= form_open('admin/orders'); ?>
 				<div class="card-body">
-					<div class="col-lg-6">
-						<div class="form-group">
-							<label>Kategori</label>
-							<select name="category" class="form-control form-control-user">
-								<option disabled selected>Pilih :</option>
-								<?php foreach ($type as $key) { ?>
-									<option value="<?= $key['type_id']; ?>"><?= $key['name']; ?></option>
-								<?php } ?>
-							</select>
-							<?= form_error('category', '<small class="text-danger">', '</small>') ?>
+					<div class="row">
+						<div class="col-lg-6">
+							<?= $this->session->flashdata('message'); ?>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-lg-7">
 							<div class="form-group">
 								<label>Nama Pesanan</label>
-								<input type="text" class="form-control form-control-user" name="name" placeholder="Pesanan" value="<?= set_value('name'); ?>">
+								<input type="text" class="form-control form-control-user" name="name" id="menuCoffee" list="mymenu" onkeyup="fetchData(this.value)">
+								<datalist id="mymenu">
+									<?php foreach ($menu as $key) { ?>
+										<option value="<?= $key['name']; ?>" />
+									<?php } ?>
+								</datalist>
 								<?= form_error('name', '<small class="text-danger">', '</small>') ?>
 							</div>
 						</div>
 						<div class="col-lg-5">
 							<div class="form-group">
+								<input type="hidden" name="menuId" id="idMenu">
 								<label>Harga</label>
-								<input type="number" name="price" id="" class="form-control form-control-user" placeholder="0" readonly>
+								<input type="number" name="price" id="priceMenu" class="form-control form-control-user" placeholder="Rp. 0" readonly onkeyup="calculate()">
 							</div>
 						</div>
 					</div>
@@ -44,14 +43,14 @@
 						<div class="col-lg-5">
 							<div class="form-group">
 								<label>Jumlah Pesanan</label>
-								<input type="number" name="amount" id="" class="form-control form-control-user" placeholder="Jumlah">
+								<input type="number" name="amount" id="amountOrder" class="form-control form-control-user" placeholder="Jumlah" onkeyup="calculate()">
 								<?= form_error('amount', '<small class="text-danger">', '</small>') ?>
 							</div>
 						</div>
 						<div class="col-lg-7">
 							<div class="form-group">
 								<label>Total Bayar</label>
-								<input type="number" name="total" id="" class="form-control form-control-user" placeholder="Total">
+								<input type="number" name="total" id="totalPayment" class="form-control form-control-user" placeholder="Total">
 							</div>
 						</div>
 					</div>

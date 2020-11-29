@@ -19,6 +19,10 @@ class Admin extends CI_Controller
 		$data['user'] = $this->db->get_where('users', ['email' =>
 		$this->session->userdata('email')])->row_array();
 
+		$data['statistics'] = $this->Admin_Model->getStatistics();
+		$data['monthly'] = $this->Admin_Model->getMonthly();
+		$data['daily'] = $this->Admin_Model->getDaily();
+
 		$this->load->view('templates/adminHeader', $data);
 		$this->load->view('admin/index', $data);
 		$this->load->view('templates/adminFooter');
@@ -144,22 +148,40 @@ class Admin extends CI_Controller
 
 	public function orders()
 	{
-		$this->form_validation->set_rules('category', 'Category', 'required|numeric');
-		$this->form_validation->set_rules('name', 'Name', 'required');
-		
+		$this->form_validation->set_rules('name', 'Name', 'required|trim');
+		$this->form_validation->set_rules('price', 'Price', 'required');
+		$this->form_validation->set_rules('amount', 'Amount', 'required');
+		$this->form_validation->set_rules('total', 'Total', 'required');
+
 		if ($this->form_validation->run() == false) {
 			$data['title'] = "Pesanan | Saerah Kopi";
 
 			$data['user'] = $this->db->get_where('users', ['email' =>
 			$this->session->userdata('email')])->row_array();
 
-			$data['type'] = $this->db->get('menu_types')->result_array();
 			$data['menu'] = $this->db->get('menus')->result_array();
 
 			$this->load->view('templates/adminHeader', $data);
 			$this->load->view('admin/order', $data);
 			$this->load->view('templates/adminFooter');
+		} else {
+			$data = [
+				'menu_id' => $this->input->post('menuId', true),
+				'amount' => htmlspecialchars($this->input->post('amount', true)),
+				'total_payment' => htmlspecialchars($this->input->post('total', true)),
+			];
+
+			$this->db->insert('orders', $data);
+			$this->session->set_flashdata('message', '<div class="alert 
+				alert-success" role="alert">Transaksi berhasil</div>');
+			redirect('admin/orders', 'refresh');
 		}
+	}
+
+	public function fetchMenu($data)
+	{
+		$fetch = $this->Admin_Model->fetchData($data);
+		echo json_encode($fetch);
 	}
 
 	public function schedule()
