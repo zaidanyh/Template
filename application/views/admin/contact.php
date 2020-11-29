@@ -72,7 +72,7 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Nama Informasi Kontak</label>
-						<input type="text" class="form-control form-control-user" name="name" value="<?= $key['name']; ?>">
+						<input type="text" class="form-control form-control-user" name="name" value="<?= $key['name']; ?>" disabled>
 					</div>
 					<div class="form-group">
 						<label>Deskripsi</label>
