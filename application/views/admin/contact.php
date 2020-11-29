@@ -72,11 +72,14 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Nama Informasi Kontak</label>
-						<input type="text" class="form-control form-control-user" name="name" value="<?= $key['name']; ?>">
+						<input type="text" class="form-control form-control-user" name="name" value="<?= $key['name']; ?>" disabled>
 					</div>
 					<div class="form-group">
 						<label>Deskripsi</label>
 						<input type="text" class="form-control form-control-user" name="description" value="<?= $key['description']; ?>">
+						<p class="text-danger mt-3" style="font-size: smaller;">
+							catatan : untuk no. telpon gunakan awalan 62xxx, jangan gunakan 0
+						</p>
 					</div>
 				</div>
 				<div class="modal-footer">

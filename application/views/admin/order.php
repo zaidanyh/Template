@@ -35,7 +35,7 @@
 							<div class="form-group">
 								<input type="hidden" name="menuId" id="idMenu">
 								<label>Harga</label>
-								<input type="number" name="price" id="priceMenu" class="form-control form-control-user" placeholder="Rp. 0" readonly onkeyup="calculate()">
+								<input type="number" name="price" id="priceMenu" class="form-control form-control-user" placeholder="Rp. 0" readonly>
 							</div>
 						</div>
 					</div>
@@ -43,14 +43,14 @@
 						<div class="col-lg-5">
 							<div class="form-group">
 								<label>Jumlah Pesanan</label>
-								<input type="number" name="amount" id="amountOrder" class="form-control form-control-user" placeholder="Jumlah" onkeyup="calculate()">
+								<input type="number" name="amount" id="amountOrder" class="form-control form-control-user" placeholder="Jumlah">
 								<?= form_error('amount', '<small class="text-danger">', '</small>') ?>
 							</div>
 						</div>
 						<div class="col-lg-7">
 							<div class="form-group">
 								<label>Total Bayar</label>
-								<input type="number" name="total" id="totalPayment" class="form-control form-control-user" placeholder="Total">
+								<input type="number" name="total" id="totalPayment" class="form-control form-control-user" placeholder="Total" readonly>
 							</div>
 						</div>
 					</div>

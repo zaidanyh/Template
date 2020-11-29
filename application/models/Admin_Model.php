@@ -26,9 +26,11 @@ class Admin_Model extends CI_Model
 
 	public function fetchData($name)
 	{
+		$actualName = str_replace("_"," ", $name);
+
 		$this->db->select('menu_id, price');
 		$this->db->from('menus');
-		$this->db->where('name', $name);
+		$this->db->where('name', $actualName);
 		return $this->db->get()->row_array();
 	}
 
