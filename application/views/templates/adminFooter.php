@@ -40,7 +40,7 @@
 			return;
 		} else {
 			const xmlHttp = new XMLHttpRequest();
-			xmlHttp.open("GET", "<?= base_url('admin/fetchMenu/') ?>" + x.trim().replace(" ", "_"), true);
+			xmlHttp.open("GET", "<?= base_url('administrator/fetchMenu/') ?>" + x.trim().replace(" ", "_"), true);
 			
 			xmlHttp.onload = function() {
 				if (this.status == 200) {

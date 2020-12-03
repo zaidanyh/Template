@@ -41,7 +41,7 @@
 											<td>Rp. <?= number_format($key['price'], 0, "","."); ?></td>
 											<td>
 												<a type="button" class="badge badge-warning mb-1" data-toggle="modal" data-target="#editMenu<?= $key['menu_id']; ?>"><i class="fa fa-eye p-1"></i> Edit</a>
-												<a class="badge badge-danger mt-1" href="<?= base_url('admin/'); ?>deletemenu/<?= $key['menu_id'] ?>" onclick="return confirm('Apakah anda yakin menghapus data ini?')">
+												<a class="badge badge-danger mt-1" href="<?= base_url('administrator/'); ?>deletemenu/<?= $key['menu_id'] ?>" onclick="return confirm('Apakah anda yakin menghapus data ini?')">
 													<i class="fa fa-trash-alt p-1"></i> Hapus
 												</a>
 											</td>
@@ -89,7 +89,7 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<?= form_open('admin/addmenu'); ?>
+			<?= form_open('administrator/addmenu'); ?>
 			<div class="modal-body">
 				<div class="form-group">
 					<label>Kategori</label>
@@ -136,7 +136,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<?= form_open('admin/allmenu') ?>
+				<?= form_open('administrator/allmenu') ?>
 				<div class="modal-body">
 					<input type="hidden" name="idMenu" value="<?= $key['menu_id']; ?>">
 					<div class="form-group">

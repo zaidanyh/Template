@@ -1,12 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin extends CI_Controller
+class Administrator extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('Admin_Model');
+		$this->load->library('form_validation');
 
 		if ($this->session->userdata('email') == null) {
 			redirect('login', 'refresh');
@@ -50,7 +51,7 @@ class Admin extends CI_Controller
 			$this->db->insert('menu_types', $data);
 			$this->session->set_flashdata('message', '<div class="alert 
 			alert-success" role="alert">Kategori menu berhasil ditambahkan</div>');
-			redirect('admin/category', 'refresh');
+			redirect('administrator/category', 'refresh');
 		}
 	}
 
@@ -66,11 +67,11 @@ class Admin extends CI_Controller
 			if ($this->db->affected_rows() > 0) {
 				$this->session->set_flashdata('message', '<div class="alert 
 					alert-success" role="alert">Menu berhasil diedit</div>');
-				redirect('admin/category', 'refresh');
+				redirect('administrator/category', 'refresh');
 			} else {
 				$this->session->set_flashdata('message', '<div class="alert 
 					alert-danger" role="alert">Menu gagal diedit</div>');
-				redirect('admin/category', 'refresh');
+				redirect('administrator/category', 'refresh');
 			}
 		}
 	}
@@ -105,16 +106,16 @@ class Admin extends CI_Controller
 				if ($this->db->affected_rows() > 0) {
 					$this->session->set_flashdata('message', '<div class="alert 
 					alert-success" role="alert">Menu berhasil diedit</div>');
-					redirect('admin/allmenu', 'refresh');
+					redirect('administrator/allmenu', 'refresh');
 				} else {
 					$this->session->set_flashdata('message', '<div class="alert 
 					alert-danger" role="alert">Menu gagal diedit</div>');
-					redirect('admin/allmenu', 'refresh');
+					redirect('administrator/allmenu', 'refresh');
 				}
 			} else {
 				$this->session->set_flashdata('message', '<div class="alert 
 				alert-danger" role="alert">Menu gagal diedit</div>');
-				redirect('admin/allmenu', 'refresh');
+				redirect('administrator/allmenu', 'refresh');
 			}
 		}
 	}
@@ -135,11 +136,11 @@ class Admin extends CI_Controller
 			$this->db->insert('menus', $data);
 			$this->session->set_flashdata('message', '<div class="alert 
 				alert-success" role="alert">Menu baru berhasil ditambahkan</div>');
-			redirect('admin/allmenu', 'refresh');
+			redirect('administrator/allmenu', 'refresh');
 		} else {
 			$this->session->set_flashdata('message', '<div class="alert 
 				alert-danger" role="alert">Menu gagal ditambahkan</div>');
-			redirect('admin/allmenu', 'refresh');
+			redirect('administrator/allmenu', 'refresh');
 		}
 	}
 
@@ -171,7 +172,7 @@ class Admin extends CI_Controller
 			$this->db->insert('orders', $data);
 			$this->session->set_flashdata('message', '<div class="alert 
 				alert-success" role="alert">Transaksi berhasil</div>');
-			redirect('admin/orders', 'refresh');
+			redirect('administrator/orders', 'refresh');
 		}
 	}
 
@@ -216,11 +217,11 @@ class Admin extends CI_Controller
 			if ($this->db->affected_rows() > 0) {
 				$this->session->set_flashdata('message', '<div class="alert 
 				alert-success" role="alert">Menu berhasil diedit</div>');
-				redirect('admin/schedule', 'refresh');
+				redirect('administrator/schedule', 'refresh');
 			} else {
 				$this->session->set_flashdata('message', '<div class="alert 
 				alert-danger" role="alert">Jangan Lupa Cek Status Libur</div>');
-				redirect('admin/schedule', 'refresh');
+				redirect('administrator/schedule', 'refresh');
 			}
 		}
 	}
@@ -257,19 +258,17 @@ class Admin extends CI_Controller
 			if ($this->db->affected_rows() > 0) {
 				$this->session->set_flashdata('message', '<div class="alert 
 				alert-info" role="alert">Blog berhasil diperbarui</div>');
-				redirect('admin/blog', 'refresh');
+				redirect('administrator/blog', 'refresh');
 			} else {
 				$this->session->set_flashdata('message', '<div class="alert 
 				alert-danger" role="alert">Blog gagal diperbarui</div>');
-				redirect('admin/blog', 'refresh');
+				redirect('administrator/blog', 'refresh');
 			}
 		}
 	}
 
 	public function contact($id = null)
 	{
-
-		$this->form_validation->set_rules('name', 'Name', 'required|trim');
 		$this->form_validation->set_rules('description', 'Description', 'required|trim');
 
 		if ($this->form_validation->run() == false) {
@@ -284,14 +283,11 @@ class Admin extends CI_Controller
 			$this->load->view('admin/contact', $data);
 			$this->load->view('templates/adminFooter');
 		} else {
-			$data = [
-				'name' => htmlspecialchars($this->input->post('name', true)),
-				'description' => htmlspecialchars($this->input->post('description', true))
-			];
-			$this->db->where('id_contact', $id)->update('contacts', $data);
+			$this->db->set('description', $this->input->post('description', true));
+			$this->db->where('id_contact', $id)->update('contacts');
 			$this->session->set_flashdata('message', '<div class="alert 
 				alert-info" role="alert">Informasi berhasil diubah</div>');
-			redirect('admin/contact', 'refresh');
+			redirect('administrator/contact', 'refresh');
 		}
 	}
 
@@ -314,7 +310,7 @@ class Admin extends CI_Controller
 		$this->db->where('menu_id', $id)->delete('menus');
 		$this->session->set_flashdata('message', '<div class="alert 
 				alert-info" role="alert">Menu berhasil dihapus</div>');
-		redirect('admin/allmenu', 'refresh');
+		redirect('administrator/allmenu', 'refresh');
 	}
 
 	public function account()
@@ -338,7 +334,7 @@ class Admin extends CI_Controller
 			$this->db->where('email', $email)->update('users');
 			$this->session->set_flashdata('message', '<div class="alert 
 				alert-info" role="alert">Akun berhasil diedit</div>');
-			redirect('admin', 'refresh');
+			redirect('administrator', 'refresh');
 		}
 	}
 
@@ -364,12 +360,12 @@ class Admin extends CI_Controller
 			if (!password_verify($current_password, $data['user']['password'])) {
 				$this->session->set_flashdata('message', '<div class="alert 
 				alert-danger" role="alert">Password saat ini salah!</div>');
-				redirect('admin/change_password', 'refresh');
+				redirect('administrator/change_password', 'refresh');
 			} else {
 				if ($current_password == $new_password) {
 					$this->session->set_flashdata('message', '<div class="alert 
 					alert-danger" role="alert">Password baru tidak boleh sama dengan password saat ini!</div>');
-					redirect('admin/change_password', 'refresh');
+					redirect('administrator/change_password', 'refresh');
 				} else {
 					$password_hash = password_hash($new_password, PASSWORD_DEFAULT);
 
@@ -378,7 +374,7 @@ class Admin extends CI_Controller
 
 					$this->session->set_flashdata('message', '<div class="alert 
 					alert-success" role="alert">Password berhasil diubah</div>');
-					redirect('admin', 'refresh');
+					redirect('administrator', 'refresh');
 				}
 			}
 		}

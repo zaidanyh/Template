@@ -8,7 +8,7 @@
 
 	<div class="row">
 		<div class="col-lg-6">
-			<?= form_open('admin/account'); ?>
+			<?= form_open('administrator/account'); ?>
 			<div class="form-group row">
 				<label for="email" class="col-sm-2 col-form-label">Email</label>
 				<div class="col-sm-10">

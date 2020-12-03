@@ -45,7 +45,7 @@
 			<hr class="sidebar-divider my-0">
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active">
-				<a class="nav-link" href="<?= base_url('admin'); ?>">
+				<a class="nav-link" href="<?= base_url('administrator'); ?>">
 					<i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>Dashboard</span>
 				</a>
@@ -57,19 +57,19 @@
 			</div>
 
 			<li class="nav-item">
-				<a class="nav-link pb-0" href="<?= base_url('admin/category'); ?>">
+				<a class="nav-link pb-0" href="<?= base_url('administrator/category'); ?>">
 					<i class="fa fa-fw fa-list-ul"></i>
 					<span>Kategori Menu</span>
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link pb-0" href="<?= base_url('admin/allmenu'); ?>">
+				<a class="nav-link pb-0" href="<?= base_url('administrator/allmenu'); ?>">
 					<i class="fa fa-fw fa-list-alt"></i>
 					<span>Daftar Menu</span>
 				</a>
 			</li>
 			<li class="nav-item pb-0">
-				<a class="nav-link" href="<?= base_url('admin/orders'); ?>">
+				<a class="nav-link" href="<?= base_url('administrator/orders'); ?>">
 					<i class="fa fa-fw fa-cart-plus"></i>
 					<span>Pesan</span>
 				</a>
@@ -80,19 +80,19 @@
 				Informasi
 			</div>
 			<li class="nav-item">
-				<a class="nav-link pb-0" href="<?= base_url('admin/schedule'); ?>">
+				<a class="nav-link pb-0" href="<?= base_url('administrator/schedule'); ?>">
 					<i class="fa fa-fw fa-clock"></i>
 					<span>Atur Jadwal Toko</span>
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link pb-0" href="<?= base_url('admin/blog'); ?>">
+				<a class="nav-link pb-0" href="<?= base_url('administrator/blog'); ?>">
 					<i class="fa fa-fw fa-folder-open"></i>
 					<span>Atur Tentang Kami</span>
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url('admin/contact'); ?>">
+				<a class="nav-link" href="<?= base_url('administrator/contact'); ?>">
 					<i class="fa fa-fw fa-question-circle"></i>
 					<span>Atur Informasi Kontak</span>
 				</a>
@@ -104,7 +104,7 @@
 			</div>
 			<li class="nav-item">
 
-				<a class="nav-link" href="<?= base_url('admin/history') ?>">
+				<a class="nav-link" href="<?= base_url('administrator/history') ?>">
 					<i class="fa fa-fw fa-history"></i>
 					<span>Riwayat Pesanan</span>
 				</a>
@@ -147,12 +147,12 @@
 							</a>
 							<!-- Dropdown - User Information -->
 							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="<?= base_url('admin/account') ?>">
+								<a class="dropdown-item" href="<?= base_url('administrator/account') ?>">
 									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 									Profile
 								</a>
 
-								<a class="dropdown-item" href="<?= base_url('admin/change_password') ?>">
+								<a class="dropdown-item" href="<?= base_url('administrator/change_password') ?>">
 									<i class="fa fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
 									Change Password
 								</a>

@@ -8,7 +8,7 @@
 	<div class="row">
 		<div class="col-lg-6">
 			<?= $this->session->flashdata('message'); ?>
-			<?= form_open('admin/change_password'); ?>
+			<?= form_open('administrator/change_password'); ?>
 			<div class="form-group">
 				<label for="current_password">Current Password</label>
 				<input type="password" class="form-control form-control-user" name="current_password" id="current_password">

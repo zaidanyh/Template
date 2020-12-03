@@ -62,7 +62,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<?= form_open_multipart('admin/blog/' . $key['id']); ?>
+				<?= form_open_multipart('administrator/blog/' . $key['id']); ?>
 				<div class="modal-body">
 					<div class="form-group row">
 						<input type="hidden" name="current_photo" value="<?= $key['photo']; ?>">

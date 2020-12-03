@@ -76,7 +76,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<?= form_open('admin/category'); ?>
+				<?= form_open('administrator/category'); ?>
 				<div class="form-group">
 					<label>Kategori Menu</label>
 					<input type="text" class="form-control form-control-user" name="name" placeholder="Nama Kategori">
@@ -103,7 +103,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<?= form_open('admin/editcategory'); ?>
+				<?= form_open('administrator/editcategory'); ?>
 				<div class="modal-body">
 					<input type="hidden" name="idCategory" value="<?= $key['type_id']; ?>">
 					<div class="form-group">

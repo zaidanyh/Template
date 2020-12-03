@@ -35,7 +35,7 @@ class Login extends CI_Controller
 					'email' => $result['email'],
 				];
 				$this->session->set_userdata($data);
-				redirect('admin', 'refresh');
+				redirect('administrator', 'refresh');
 			} else {
 				$this->session->set_flashdata('message', '<small><div class="alert alert-danger" 
 				role="alert">Password is wrong!</div></small>');

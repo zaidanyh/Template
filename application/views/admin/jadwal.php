@@ -74,7 +74,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<?= form_open('admin/schedule'); ?>
+				<?= form_open('administrator/schedule'); ?>
 				<div class="modal-body">
 					<input type="hidden" name="idSchedule" value="<?= $key['id_schedule']; ?>">
 					<div class="form-group">

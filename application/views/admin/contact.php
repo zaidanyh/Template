@@ -68,7 +68,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<?= form_open('admin/contact/' . $key['id_contact']); ?>
+				<?= form_open('administrator/contact/' . $key['id_contact']); ?>
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Nama Informasi Kontak</label>
@@ -86,7 +86,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-					<button type="submit" class="btn btn-success">Simpan</button>
+					<button type="submit" class="btn btn-success">Ubah</button>
 				</div>
 				<?= form_close(); ?>
 			</div>
