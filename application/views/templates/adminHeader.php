@@ -27,8 +27,7 @@
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<ul class="nav navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar"
-		style="background-color:  #77523d;">
+		<ul class="nav navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color:  #77523d;">
 
 			<!-- Sidebar - Brand -->
 			<a class="sidebar-brand d-flex align-items-center justify-content-center m-3" href="<?= base_url('admin'); ?>">
@@ -41,11 +40,7 @@
 			<!-- Divider -->
 			<hr class="sidebar-divider my-0">
 			<!-- Nav Item - Dashboard -->
-			<?php if ($title == "Dashboard Admin Saerah Kopi") {?>
-				<li class="nav-item active">
-			<?php } else { ?>
-				<li class="nav-item">
-				<?php }?>
+			<li class="nav-item">
 				<a class="nav-link" href="<?= base_url('admin'); ?>">
 					<i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>Dashboard</span>
@@ -57,100 +52,100 @@
 				Pemesanan
 			</div>
 
-			<?php if ($title == "Daftar Kategori Menu | Saerah Kopi") {?>
+			<?php if ($title == "Daftar Kategori Menu | Saerah Kopi") { ?>
 				<li class="nav-item active">
-			<?php } else { ?>
+				<?php } else { ?>
 				<li class="nav-item">
-				<?php }?>
+				<?php } ?>
 				<a class="nav-link pb-0" href="<?= base_url('admin/category'); ?>">
 					<i class="fa fa-fw fa-list-ul"></i>
 					<span>Kategori Menu</span>
 				</a>
-			</li>
+				</li>
 
-			<?php if ($title == "Daftar Menu | Saerah Kopi") {?>
-				<li class="nav-item active">
-			<?php } else { ?>
-				<li class="nav-item">
-				<?php }?>
-				<a class="nav-link pb-0" href="<?= base_url('admin/allmenu'); ?>">
-					<i class="fa fa-fw fa-list-alt"></i>
-					<span>Daftar Menu</span>
-				</a>
-			</li>
+				<?php if ($title == "Daftar Menu | Saerah Kopi") { ?>
+					<li class="nav-item active">
+					<?php } else { ?>
+					<li class="nav-item">
+					<?php } ?>
+					<a class="nav-link pb-0" href="<?= base_url('admin/allmenu'); ?>">
+						<i class="fa fa-fw fa-list-alt"></i>
+						<span>Daftar Menu</span>
+					</a>
+					</li>
 
-			<?php if ($title == "Pesanan | Saerah Kopi") {?>
-				<li class="nav-item active">
-			<?php } else { ?>
-				<li class="nav-item pb-0">
-				<?php }?>
-				<a class="nav-link" href="<?= base_url('admin/orders'); ?>">
-					<i class="fa fa-fw fa-cart-plus"></i>
-					<span>Pesan</span>
-				</a>
-			</li>
+					<?php if ($title == "Pesanan | Saerah Kopi") { ?>
+						<li class="nav-item active">
+						<?php } else { ?>
+						<li class="nav-item pb-0">
+						<?php } ?>
+						<a class="nav-link" href="<?= base_url('admin/orders'); ?>">
+							<i class="fa fa-fw fa-cart-plus"></i>
+							<span>Pesan</span>
+						</a>
+						</li>
 
-			<hr class="sidebar-divider">
-			<div class="sidebar-heading">
-				Informasi
-			</div>
+						<hr class="sidebar-divider">
+						<div class="sidebar-heading">
+							Informasi
+						</div>
 
-			<?php if ($title == "Pengaturan Jadwal | Saerah Kopi") {?>
-				<li class="nav-item active">
-			<?php } else { ?>
-				<li class="nav-item">
-				<?php }?>
-				<a class="nav-link pb-0" href="<?= base_url('admin/schedule'); ?>">
-					<i class="fa fa-fw fa-clock"></i>
-					<span>Atur Jadwal Toko</span>
-				</a>
-			</li>
+						<?php if ($title == "Pengaturan Jadwal | Saerah Kopi") { ?>
+							<li class="nav-item active">
+							<?php } else { ?>
+							<li class="nav-item">
+							<?php } ?>
+							<a class="nav-link pb-0" href="<?= base_url('admin/schedule'); ?>">
+								<i class="fa fa-fw fa-clock"></i>
+								<span>Atur Jadwal Toko</span>
+							</a>
+							</li>
 
-			<?php if ($title == "Tentang Saerah Kopi") {?>
-				<li class="nav-item active">
-			<?php } else { ?>
-				<li class="nav-item">
-				<?php }?>
-				<a class="nav-link pb-0" href="<?= base_url('admin/blog'); ?>">
-					<i class="fa fa-fw fa-folder-open"></i>
-					<span>Atur Tentang Kami</span>
-				</a>
-			</li>
+							<?php if ($title == "Tentang Saerah Kopi") { ?>
+								<li class="nav-item active">
+								<?php } else { ?>
+								<li class="nav-item">
+								<?php } ?>
+								<a class="nav-link pb-0" href="<?= base_url('admin/blog'); ?>">
+									<i class="fa fa-fw fa-folder-open"></i>
+									<span>Atur Tentang Kami</span>
+								</a>
+								</li>
 
-			<?php if ($title == "Informasi Kontak | Saerah Kopi") {?>
-				<li class="nav-item active">
-			<?php } else { ?>
-				<li class="nav-item">
-				<?php }?>
-				<a class="nav-link" href="<?= base_url('admin/contact'); ?>">
-					<i class="fa fa-fw fa-question-circle"></i>
-					<span>Atur Informasi Kontak</span>
-				</a>
-			</li>
+								<?php if ($title == "Informasi Kontak | Saerah Kopi") { ?>
+									<li class="nav-item active">
+									<?php } else { ?>
+									<li class="nav-item">
+									<?php } ?>
+									<a class="nav-link" href="<?= base_url('admin/contact'); ?>">
+										<i class="fa fa-fw fa-question-circle"></i>
+										<span>Atur Informasi Kontak</span>
+									</a>
+									</li>
 
-			<hr class="sidebar-divider">
-			<div class="sidebar-heading">
-				Riwayat
-			</div>
+									<hr class="sidebar-divider">
+									<div class="sidebar-heading">
+										Riwayat
+									</div>
 
-			<?php if ($title == "Riwayat Data Pesanan | Saerah Kopi") {?>
-				<li class="nav-item active">
-			<?php } else { ?>
-				<li class="nav-item">
-				<?php }?>
-				<a class="nav-link" href="<?= base_url('admin/history') ?>">
-					<i class="fa fa-fw fa-history"></i>
-					<span>Riwayat Pesanan</span>
-				</a>
-			</li>
+									<?php if ($title == "Riwayat Data Pesanan | Saerah Kopi") { ?>
+										<li class="nav-item active">
+										<?php } else { ?>
+										<li class="nav-item">
+										<?php } ?>
+										<a class="nav-link" href="<?= base_url('admin/history') ?>">
+											<i class="fa fa-fw fa-history"></i>
+											<span>Riwayat Pesanan</span>
+										</a>
+										</li>
 
-			<!-- Divider -->
-			<hr class="sidebar-divider d-none d-md-block">
+										<!-- Divider -->
+										<hr class="sidebar-divider d-none d-md-block">
 
-			<!-- Sidebar Toggler (Sidebar) -->
-			<div class="text-center d-none d-md-inline">
-				<button class="rounded-circle border-0" id="sidebarToggle"></button>
-			</div>
+										<!-- Sidebar Toggler (Sidebar) -->
+										<div class="text-center d-none d-md-inline">
+											<button class="rounded-circle border-0" id="sidebarToggle"></button>
+										</div>
 		</ul>
 		<!-- End of Sidebar -->
 
@@ -186,7 +181,7 @@
 									Profile
 								</a>
 
-								<a class="dropdown-item" href="<?=base_url('admin/change_password')?>">
+								<a class="dropdown-item" href="<?= base_url('admin/change_password') ?>">
 									<i class="fa fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
 									Change Password
 								</a>

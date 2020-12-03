@@ -46,9 +46,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			<div class="row">
 				<div class="col-xl-9 mx-auto">
 					<div class="cta-inner text-center rounded">
-						<h2 class="section-heading mb-4"><span class="section-heading-upper">Our Promise</span><span class="section-heading-lower">To You</span></h2>
-						<p class="mb-0">When you walk into our shop to start your day, we are dedicated to providing you with friendly service, a welcoming atmosphere, and above all else, excellent products made with the highest quality ingredients. If you are not
-							satisfied, please let us know and we will do whatever we can to make things right!</p>
+						<h2 class="section-heading mb-4"><span class="section-heading-upper">Layanan Terbaik Kami</span><span class="section-heading-lower">Kepada Pelanggan</span></h2>
+						<p class="mb-0">Hubungi kami melalui</p>
+						<p class="m-0"><?= $contact[0]['name']; ?> : <?= preg_replace("/([0-9]{2})([0-9]{3})([0-9]{4})([0-9]{4})/", "(+$1) $2 $3 $4", $contact[0]['description']); ?></p>
+						<p class="m-0"><?= $contact[1]['name']; ?> : <i><?= $contact[1]['description']; ?></i></p>
+						<p class="m-0"><?= $contact[2]['name']; ?> : <?= $contact[2]['description']; ?></p>
 					</div>
 				</div>
 			</div>

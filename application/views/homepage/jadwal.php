@@ -45,7 +45,7 @@
 						<p class="address mb-5"><em><strong><?= $address['name']; ?></strong><span><br><?= $address['description']; ?></span></em></p>
 						<p class="address mb-0"><small><em>Call Anytime</em></small>
 							<a href="https://api.whatsapp.com/send?phone=<?= $whatsapp['description']; ?>" class="h4 text-dark"><br>
-								<i class="fa fa-fw fa-whatsapp"></i> <?= $whatsapp['description']; ?>
+								<i class="fa fa-fw fa-whatsapp"></i> <?= preg_replace("/([0-9]{2})([0-9]{3})([0-9]{4})([0-9]{4})/", "(+$1) $2 $3 $4", $whatsapp['description']); ?>
 							</a>
 						</p>
 					</div>

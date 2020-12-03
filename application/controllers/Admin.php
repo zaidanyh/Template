@@ -20,10 +20,9 @@ class Admin extends CI_Controller
 		$this->session->userdata('email')])->row_array();
 
 		$data['statistics'] = $this->Admin_Model->getStatistics();
+		$data['chart'] = $this->Admin_Model->getDateforChart();
 
-		$this->load->view('templates/adminHeader', $data);
 		$this->load->view('admin/index', $data);
-		$this->load->view('templates/adminFooter');
 	}
 
 	public function category()

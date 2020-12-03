@@ -24,11 +24,11 @@
 							<tbody>
 								<?php foreach ($history as $key) { ?>
 									<tr>
-										<td><?=$key['category'];?></td>
-										<td><?=$key['name'];?></td>
-										<td><?=$key['price'];?></td>
-										<td><?=$key['amount'];?></td>
-										<td><?=$key['total'];?></td>
+										<td><?= $key['category']; ?></td>
+										<td><?= $key['name']; ?></td>
+										<td><?= $key['price']; ?></td>
+										<td><?= $key['amount']; ?></td>
+										<td><?= $key['total']; ?></td>
 									</tr>
 								<?php } ?>
 							</tbody>

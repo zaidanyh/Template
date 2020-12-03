@@ -1,18 +1,21 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Home extends CI_Controller
+{
 
 	public function index()
 	{
 		$data['title'] = "Selamat Datang Kopi Saerah";
 		$data['whatsapp'] = $this->db->get_where('contacts', ['id_contact' => "1"])->row_array();
+		$data['contact'] = $this->db->get('contacts')->result_array();
 		$this->load->view('homepage/index', $data);
 	}
 
 	public function about()
 	{
 		$data['title'] = "Tentang Kami | Kopi Saerah";
+
 		$data['data'] = $this->db->get_where('blogs', ['id' => "6"])->row_array();
 		$data['whatsapp'] = $this->db->get_where('contacts', ['id_contact' => "1"])->row_array();
 		$this->load->view('homepage/about', $data);

@@ -72,17 +72,15 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Nama Informasi Kontak</label>
-<<<<<<< Updated upstream
-						<input type="text" class="form-control form-control-user" name="name" value="<?= $key['name']; ?>" disabled>
-=======
-						<input type="text" class="form-control form-control-user" name="name" value="<?= $key['name']; ?>" readonly>
->>>>>>> Stashed changes
+
+						<input type="text" class="form-control form-control-user mb-3" name="name" value="<?= $key['name']; ?>" disabled readonly>
+
 					</div>
 					<div class="form-group">
 						<label>Deskripsi</label>
 						<input type="text" class="form-control form-control-user" name="description" value="<?= $key['description']; ?>">
 						<p class="text-danger mt-3" style="font-size: smaller;">
-							catatan : untuk no. telpon gunakan awalan 62xxx, jangan gunakan 0
+							catatan : untuk no. telepon gunakan awalan 62xxx, jangan gunakan 0
 						</p>
 					</div>
 				</div>

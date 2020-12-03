@@ -34,16 +34,18 @@
 <script src="<?= base_url('assets/'); ?>/js/content-js.js"></script>
 <script>
 	function fetchData(x) {
-
+		x = x.trim().replace(" ", "_");
 		if (x.length == 0) {
 			document.getElementById("priceMenu").value = "0";
 			return;
 		} else {
 			const xmlHttp = new XMLHttpRequest();
 			xmlHttp.open("GET", "<?= base_url('admin/fetchMenu/') ?>" + x.trim().replace(" ", "_"), true);
+			
 			xmlHttp.onload = function() {
 				if (this.status == 200) {
 					const result = JSON.parse(xmlHttp.response);
+					console.log(result);
 					document.getElementById("idMenu").value = result['menu_id'];
 					document.getElementById("priceMenu").value = result['price'];
 				}
@@ -67,5 +69,4 @@
 <script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
 
 </body>
-
 </html>
